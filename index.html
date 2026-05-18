@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>José Turín — Dirección Agropecuaria</title>
+  <link rel="icon" type="image/png" href="jose Turin/JT 6.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Variables ───────────────────────────────────────────────── */
+    :root {
+      --verde:      #0a4027;
+      --verde-mid:  #155c38;
+      --arena:      #b8a99a;
+      --gris:       #f4f4f2;
+      --blanco:     #ffffff;
+      --texto:      #1a1a1a;
+      --texto-suave:#555;
+      --radio:      12px;
+      --sombra:     0 4px 20px rgba(0,0,0,.08);
+      --sombra-hover: 0 8px 32px rgba(0,0,0,.14);
+      --trans:      .25s ease;
+    }
+
+    /* ── Reset ───────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--texto); line-height: 1.6; }
+    img  { max-width: 100%; display: block; }
+    a    { text-decoration: none; color: inherit; }
+
+    /* ── Utilidades ──────────────────────────────────────────────── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 80px 0; }
+    .tag        { display: inline-block; font-size: .75rem; font-weight: 600;
+                  letter-spacing: .1em; text-transform: uppercase;
+                  color: var(--arena); margin-bottom: 12px; }
+    .titulo     { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700;
+                  line-height: 1.2; }
+    .subtitulo  { font-size: 1.05rem; color: var(--texto-suave);
+                  margin-top: 12px; max-width: 560px; }
+    .btn        { display: inline-flex; align-items: center; gap: 8px;
+                  padding: 13px 28px; border-radius: 50px; font-weight: 600;
+                  font-size: .95rem; cursor: pointer; border: none;
+                  transition: var(--trans); }
+    .btn-verde  { background: var(--verde); color: #fff; }
+    .btn-verde:hover { background: var(--verde-mid); transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--verde);
+                   border: 2px solid var(--verde); }
+    .btn-outline:hover { background: var(--verde); color: #fff; }
+    .btn-blanco { background: #fff; color: var(--verde); }
+    .btn-blanco:hover { background: var(--arena); }
+
+    /* ── Navbar ──────────────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e8e8e6;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo img { height: 36px; }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: .9rem; font-weight: 500; color: var(--texto-suave);
+      transition: color var(--trans);
+    }
+    .nav-links a:hover { color: var(--verde); }
+    .nav-cta { display: flex; gap: 12px; }
+
+    /* hamburger */
+    .nav-toggle { display: none; background: none; border: none;
+                  cursor: pointer; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px;
+                        background: var(--verde); margin: 5px 0;
+                        transition: var(--trans); }
+
+    /* ── Hero ────────────────────────────────────────────────────── */
+    #inicio {
+      background: var(--verde);
+      color: #fff;
+      padding: 100px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    #inicio::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(21,92,56,.5) 0%, transparent 70%);
+    }
+    .hero-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: center; position: relative;
+    }
+    .hero-texto .tag { color: var(--arena); }
+    .hero-texto .titulo { color: #fff; font-size: clamp(2rem,5vw,3.2rem); }
+    .hero-texto .subtitulo {
+      color: rgba(255,255,255,.75); margin-top: 16px; max-width: 480px;
+    }
+    .hero-botones { display: flex; gap: 14px; margin-top: 36px; flex-wrap: wrap; }
+    .hero-img-wrap {
+      display: flex; justify-content: center; align-items: center;
+    }
+    .hero-img-wrap img {
+      width: 300px; height: 300px; object-fit: contain;
+      filter: drop-shadow(0 20px 40px rgba(0,0,0,.25));
+      animation: float 5s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    /* ── Stats bar ───────────────────────────────────────────────── */
+    #stats {
+      background: var(--blanco);
+      padding: 0;
+      border-bottom: 1px solid #e8e8e6;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      divide-x: 1px solid #e8e8e6;
+    }
+    .stat-item {
+      padding: 36px 24px; text-align: center;
+      border-right: 1px solid #e8e8e6;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      font-size: 2.4rem; font-weight: 700; color: var(--verde);
+      line-height: 1;
+    }
+    .stat-label { font-size: .85rem; color: var(--texto-suave);
+                  margin-top: 6px; font-weight: 500; }
+
+    /* ── Nosotros ────────────────────────────────────────────────── */
+    #nosotros { background: var(--gris); }
+    .nosotros-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .nosotros-img {
+      position: relative;
+    }
+    .nosotros-img img {
+      width: 100%; max-width: 380px;
+      filter: drop-shadow(0 12px 30px rgba(0,0,0,.12));
+    }
+    .nosotros-badge {
+      position: absolute; bottom: -16px; right: 0;
+      background: var(--verde); color: #fff;
+      padding: 16px 20px; border-radius: var(--radio);
+      font-size: .85rem; font-weight: 600; text-align: center;
+      box-shadow: var(--sombra);
+    }
+    .nosotros-badge span { display: block; font-size: 1.6rem; font-weight: 700; }
+    .puntos { margin-top: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .punto  { display: flex; gap: 14px; align-items: flex-start; }
+    .punto i { color: var(--verde); font-size: 1.1rem; margin-top: 3px; flex-shrink: 0; }
+    .punto p { font-size: .95rem; color: var(--texto-suave); }
+
+    /* ── Servicios ───────────────────────────────────────────────── */
+    #servicios { background: var(--blanco); }
+    .seccion-header { text-align: center; margin-bottom: 52px; }
+    .seccion-header .subtitulo { margin: 12px auto 0; }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--blanco);
+      border: 1px solid #e8e8e6;
+      border-radius: var(--radio);
+      padding: 32px 28px;
+      box-shadow: var(--sombra);
+      transition: var(--trans);
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sombra-hover);
+      border-color: var(--arena);
+    }
+    .card-icon {
+      width: 52px; height: 52px; border-radius: 12px;
+      background: rgba(10,64,39,.08);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .card-icon i { font-size: 1.3rem; color: var(--verde); }
+    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+    .card p  { font-size: .9rem; color: var(--texto-suave); line-height: 1.6; }
+
+    /* ── Campos / Áreas ──────────────────────────────────────────── */
+    #campos { background: var(--gris); }
+    .campos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .campo-card {
+      background: var(--blanco);
+      border-radius: var(--radio);
+      overflow: hidden;
+      box-shadow: var(--sombra);
+      transition: var(--trans);
+    }
+    .campo-card:hover { transform: translateY(-4px); box-shadow: var(--sombra-hover); }
+    .campo-thumb {
+      height: 160px;
+      background: var(--verde);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .campo-thumb img { height: 80px; object-fit: contain; opacity: .9; }
+    .campo-thumb.alt { background: var(--arena); }
+    .campo-body { padding: 24px; }
+    .campo-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    .campo-body p  { font-size: .88rem; color: var(--texto-suave); }
+    .campo-meta {
+      display: flex; gap: 16px; margin-top: 14px;
+      font-size: .82rem; color: var(--texto-suave); font-weight: 500;
+    }
+    .campo-meta i { color: var(--verde); margin-right: 4px; }
+
+    /* ── Proceso ─────────────────────────────────────────────────── */
+    #proceso { background: var(--verde); color: #fff; }
+    #proceso .tag { color: var(--arena); }
+    #proceso .titulo { color: #fff; }
+    #proceso .subtitulo { color: rgba(255,255,255,.7); }
+    .proceso-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px; margin-top: 52px;
+    }
+    .step {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radio);
+      padding: 28px 24px;
+      text-align: center;
+      transition: var(--trans);
+    }
+    .step:hover { background: rgba(255,255,255,.12); }
+    .step-num {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: var(--arena); color: var(--verde);
+      font-size: 1.1rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 8px; color: #fff; }
+    .step p   { font-size: .88rem; color: rgba(255,255,255,.65); }
+
+    /* ── Contacto ────────────────────────────────────────────────── */
+    #contacto { background: var(--blanco); }
+    .contacto-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: start;
+    }
+    .contacto-info h2 { font-size: 1.8rem; font-weight: 700; }
+    .contacto-info p  { color: var(--texto-suave); margin-top: 12px; }
+    .info-items { margin-top: 32px; display: flex; flex-direction: column; gap: 20px; }
+    .info-item  { display: flex; align-items: center; gap: 16px; }
+    .info-icon  {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(10,64,39,.08);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .info-icon i { color: var(--verde); font-size: 1.1rem; }
+    .info-item div h4  { font-size: .95rem; font-weight: 600; }
+    .info-item div p   { font-size: .9rem; color: var(--texto-suave); }
+    .form-card {
+      background: var(--gris);
+      border-radius: var(--radio);
+      padding: 36px;
+      box-shadow: var(--sombra);
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block; font-size: .85rem; font-weight: 600;
+      margin-bottom: 6px; color: var(--texto);
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%; padding: 11px 14px;
+      border: 1px solid #ddd; border-radius: 8px;
+      font-family: inherit; font-size: .95rem;
+      background: #fff; color: var(--texto);
+      transition: border-color var(--trans);
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--verde); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group.full { grid-column: span 2; }
+
+    /* ── Videos ─────────────────────────────────────────────────── */
+    #videos { background: var(--gris); }
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      justify-items: center;
+    }
+    .video-card { width: 100%; max-width: 320px; }
+    .video-label {
+      font-size: .78rem; font-weight: 700; color: var(--verde);
+      text-transform: uppercase; letter-spacing: .1em;
+      margin-bottom: 10px; text-align: center;
+    }
+    .video-wrapper {
+      position: relative; width: 100%; padding-top: 177.78%;
+      border-radius: var(--radio); overflow: hidden;
+      box-shadow: var(--sombra);
+    }
+    .video-wrapper iframe {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%; border: none;
+    }
+    @media (max-width: 1100px) { .videos-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px)  { .videos-grid { grid-template-columns: 1fr; } }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    footer {
+      background: var(--verde); color: rgba(255,255,255,.75);
+      padding: 56px 0 28px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px; padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .footer-brand img { height: 32px; margin-bottom: 16px; }
+    .footer-brand p { font-size: .9rem; max-width: 300px; }
+    .footer-col h4 {
+      color: #fff; font-size: .9rem; font-weight: 700;
+      margin-bottom: 16px; letter-spacing: .05em;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { font-size: .875rem; transition: color var(--trans); }
+    .footer-col ul a:hover { color: var(--arena); }
+    .footer-socials { display: flex; gap: 12px; margin-top: 24px; }
+    .social-btn {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: .9rem;
+      transition: var(--trans);
+    }
+    .social-btn:hover { background: var(--arena); color: var(--verde); }
+    .footer-bottom {
+      padding-top: 24px; display: flex;
+      justify-content: space-between; align-items: center;
+      font-size: .82rem;
+    }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner, .nosotros-inner,
+      .contacto-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero-img-wrap  { order: -1; }
+      .hero-img-wrap img { width: 200px; height: 200px; }
+      .nosotros-badge { bottom: 0; right: 0; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: span 2; }
+    }
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta .btn-outline { display: none; }
+      .nav-toggle { display: block; }
+      .stats-grid { grid-template-columns: repeat(2,1fr); }
+      .form-row { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand { grid-column: 1; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .proceso-steps { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <nav>
+    <div class="container nav-inner">
+      <a class="nav-logo" href="#inicio">
+        <img src="jose Turin/JOSE TURIN.png" alt="José Turín Dirección Agropecuaria" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#campos">Campos</a></li>
+        <li><a href="#proceso">Proceso</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a class="btn btn-outline" href="#contacto">Contactar</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menú" onclick="toggleMenu(this)">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════ HERO ═══════════ -->
+  <section id="inicio">
+    <div class="container hero-inner">
+      <div class="hero-texto">
+        <span class="tag"><i class="fa-solid fa-seedling"></i>&nbsp; Dirección Agropecuaria</span>
+        <h1 class="titulo">Gestión del campo con visión estratégica</h1>
+        <p class="subtitulo">
+          Asesoramiento integral para productores agropecuarios. Maximizamos el potencial
+          productivo de cada establecimiento con experiencia, tecnología y compromiso.
+        </p>
+        <div class="hero-botones">
+          <a class="btn btn-blanco" href="#servicios">
+            <i class="fa-solid fa-arrow-right"></i> Ver servicios
+          </a>
+          <a class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,.5)" href="#contacto">
+            Consultá ahora
+          </a>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="jose Turin/JT 6.png" alt="José Turín" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ STATS BAR ═══════════ -->
+  <section id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">+20</div>
+          <div class="stat-label"><i class="fa-regular fa-calendar" style="color:var(--arena)"></i>&nbsp; Años de experiencia</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15k+</div>
+          <div class="stat-label"><i class="fa-solid fa-map" style="color:var(--arena)"></i>&nbsp; Hectáreas gestionadas</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">80+</div>
+          <div class="stat-label"><i class="fa-solid fa-handshake" style="color:var(--arena)"></i>&nbsp; Clientes activos</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">200+</div>
+          <div class="stat-label"><i class="fa-solid fa-chart-line" style="color:var(--arena)"></i>&nbsp; Proyectos completados</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ NOSOTROS ═══════════ -->
+  <section id="nosotros" class="section">
+    <div class="container nosotros-inner">
+      <div class="nosotros-img">
+        <img src="jose Turin/JT .png" alt="Monograma José Turín" />
+        <div class="nosotros-badge">
+          <span>+20</span>
+          años en el<br>sector
+        </div>
+      </div>
+      <div class="nosotros-texto">
+        <span class="tag"><i class="fa-solid fa-user-tie"></i>&nbsp; Quiénes somos</span>
+        <h2 class="titulo">Experiencia y confianza en el campo argentino</h2>
+        <p class="subtitulo">
+          José Turín es una dirección agropecuaria fundada con el objetivo de ofrecer
+          asesoramiento técnico y estratégico de excelencia a productores de todo el país.
+        </p>
+        <div class="puntos">
+          <div class="punto">
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Asesoramiento personalizado adaptado a cada establecimiento y sistema productivo.</p>
+          </div>
+          <div class="punto">
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Equipo técnico interdisciplinario: ingenieros agrónomos, veterinarios y economistas rurales.</p>
+          </div>
+          <div class="punto">
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Uso de tecnología de precisión para maximizar la eficiencia y rentabilidad.</p>
+          </div>
+          <div class="punto">
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Presencia en múltiples provincias con conocimiento profundo del territorio.</p>
+          </div>
+        </div>
+        <div style="margin-top:32px">
+          <a class="btn btn-verde" href="#contacto">
+            <i class="fa-solid fa-phone"></i> Hablar con un asesor
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ SERVICIOS ═══════════ -->
+  <section id="servicios" class="section">
+    <div class="container">
+      <div class="seccion-header">
+        <span class="tag" style="color:var(--verde)"><i class="fa-solid fa-briefcase"></i>&nbsp; Servicios</span>
+        <h2 class="titulo">Todo lo que tu campo necesita</h2>
+        <p class="subtitulo">Ofrecemos un abanico completo de servicios para acompañar cada etapa de la producción agropecuaria.</p>
+      </div>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-wheat-awn"></i></div>
+          <h3>Agricultura de precisión</h3>
+          <p>Planificación de siembras, fertilización variable y monitoreo satelital de cultivos para maximizar rendimientos.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-cow"></i></div>
+          <h3>Producción ganadera</h3>
+          <p>Diseño de sistemas de cría, invernada y tambo. Nutrición animal y manejo sanitario integral del rodeo.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
+          <h3>Administración de campos</h3>
+          <p>Gestión contable, liquidación de arrendamientos, contratos y seguimiento de indicadores de rentabilidad.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-droplet"></i></div>
+          <h3>Gestión del agua</h3>
+          <p>Diseño de aguadas, tajamares y sistemas de riego. Monitoreo de napas y planificación hídrica estacional.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
+          <h3>Sustentabilidad</h3>
+          <p>Certificaciones ambientales, huella de carbono y planes de conservación de suelos para producción responsable.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-chart-bar"></i></div>
+          <h3>Análisis económico</h3>
+          <p>Proyecciones financieras, análisis de inversiones y planes de negocio adaptados al contexto agropecuario.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-tractor"></i></div>
+          <h3>Maquinaria y logística</h3>
+          <p>Coordinación de labores, contratistas y cosecha. Optimización de la cadena logística desde el campo al mercado.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+          <h3>Capacitación rural</h3>
+          <p>Talleres, jornadas de campo y formación continua para productores, peones y personal técnico.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ VIDEOS ═══════════ -->
+  <section id="videos" class="section">
+    <div class="container">
+      <div class="seccion-header">
+        <span class="tag" style="color:var(--verde)"><i class="fa-brands fa-instagram"></i>&nbsp; Instagram</span>
+        <h2 class="titulo">Contenido para el campo</h2>
+        <p class="subtitulo">Seguinos en Instagram para más consejos y novedades sobre gestión agropecuaria.</p>
+      </div>
+      <div class="videos-grid">
+        <div class="video-card">
+          <p class="video-label">Servicios</p>
+          <div class="video-wrapper">
+            <iframe src="https://www.instagram.com/reel/DO8nMy0DqnD/embed/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+        </div>
+        <div class="video-card">
+          <p class="video-label">5 Puntos clave</p>
+          <div class="video-wrapper">
+            <iframe src="https://www.instagram.com/reel/DPyx4ZwjhC2/embed/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+        </div>
+        <div class="video-card">
+          <p class="video-label">Rindes</p>
+          <div class="video-wrapper">
+            <iframe src="https://www.instagram.com/reel/DW2QysOjiKW/embed/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+        </div>
+        <div class="video-card">
+          <p class="video-label">Gestión</p>
+          <div class="video-wrapper">
+            <iframe src="https://www.instagram.com/reel/DYSkoljRZKh/embed/" scrolling="no" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CAMPOS / ÁREAS ═══════════ -->
+  <section id="campos" class="section">
+    <div class="container">
+      <div class="seccion-header">
+        <span class="tag" style="color:var(--verde)"><i class="fa-solid fa-map-location-dot"></i>&nbsp; Áreas de trabajo</span>
+        <h2 class="titulo">Presencia en todo el país</h2>
+        <p class="subtitulo">Operamos en las principales regiones productivas de Argentina con equipos especializados en cada zona.</p>
+      </div>
+      <div class="campos-grid">
+        <div class="campo-card">
+          <div class="campo-thumb">
+            <img src="jose Turin/JT 6.png" alt="Pampeana" />
+          </div>
+          <div class="campo-body">
+            <h3>Región Pampeana</h3>
+            <p>Soja, maíz, trigo y ganadería de cría e invernada en las principales zonas productivas del país.</p>
+            <div class="campo-meta">
+              <span><i class="fa-solid fa-map-pin"></i> Buenos Aires, Córdoba, La Pampa</span>
+            </div>
+          </div>
+        </div>
+        <div class="campo-card">
+          <div class="campo-thumb alt">
+            <img src="jose Turin/JT 7.png" alt="NEA" />
+          </div>
+          <div class="campo-body">
+            <h3>Noreste (NEA)</h3>
+            <p>Ganadería extensiva, arroceras y cultivos subtropicales en ambientes de alta complejidad productiva.</p>
+            <div class="campo-meta">
+              <span><i class="fa-solid fa-map-pin"></i> Corrientes, Entre Ríos, Misiones</span>
+            </div>
+          </div>
+        </div>
+        <div class="campo-card">
+          <div class="campo-thumb">
+            <img src="jose Turin/JT 6.png" alt="NOA" />
+          </div>
+          <div class="campo-body">
+            <h3>Noroeste (NOA)</h3>
+            <p>Producción de caña, soja y poroto. Ganadería de altura y cultivos andinos de alto valor.</p>
+            <div class="campo-meta">
+              <span><i class="fa-solid fa-map-pin"></i> Tucumán, Salta, Jujuy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ PROCESO ═══════════ -->
+  <section id="proceso" class="section">
+    <div class="container">
+      <div class="seccion-header">
+        <span class="tag"><i class="fa-solid fa-gears"></i>&nbsp; Cómo trabajamos</span>
+        <h2 class="titulo">Un proceso claro y efectivo</h2>
+        <p class="subtitulo" style="color:rgba(255,255,255,.65); margin: 12px auto 0">
+          Desde el primer contacto hasta los resultados: así acompañamos cada proyecto.
+        </p>
+      </div>
+      <div class="proceso-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Diagnóstico inicial</h3>
+          <p>Visita al establecimiento y análisis completo del sistema productivo actual.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Plan estratégico</h3>
+          <p>Diseño de un plan a medida con metas claras, cronograma y presupuesto estimado.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Implementación</h3>
+          <p>Ejecución con seguimiento técnico continuo y ajuste en tiempo real según resultados.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Informes y resultados</h3>
+          <p>Reportes periódicos con indicadores clave y proyecciones para la toma de decisiones.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ CONTACTO ═══════════ -->
+  <section id="contacto" class="section">
+    <div class="container contacto-inner">
+      <div class="contacto-info">
+        <span class="tag" style="color:var(--verde)"><i class="fa-solid fa-envelope"></i>&nbsp; Contacto</span>
+        <h2 class="titulo">Hablemos sobre tu campo</h2>
+        <p>Dejanos tus datos y un asesor de José Turín se pondrá en contacto a la brevedad para entender tus necesidades.</p>
+        <div class="info-items">
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <h4>Teléfono</h4>
+              <p><a href="tel:+543442326537" style="color:inherit">+54 9 3442 326-537</a></p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/543442326537" target="_blank" rel="noopener" style="color:inherit">Consultas rápidas por chat</a></p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <p>info@joseturin.com.ar</p>
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <h4>Ubicación</h4>
+              <p>Argentina — atención en todo el país</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-card">
+        <h3 style="font-size:1.2rem;margin-bottom:24px">Envianos una consulta</h3>
+        <form onsubmit="enviarFormulario(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre *</label>
+              <input type="text" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label>Apellido *</label>
+              <input type="text" placeholder="Tu apellido" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" placeholder="+54 9 ..." />
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" placeholder="tu@email.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Servicio de interés</label>
+            <select>
+              <option value="">Seleccioná un servicio</option>
+              <option>Agricultura de precisión</option>
+              <option>Producción ganadera</option>
+              <option>Administración de campos</option>
+              <option>Gestión del agua</option>
+              <option>Sustentabilidad</option>
+              <option>Análisis económico</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Mensaje</label>
+            <textarea placeholder="Contanos sobre tu establecimiento y tus necesidades..."></textarea>
+          </div>
+          <button class="btn btn-verde" type="submit" style="width:100%;justify-content:center">
+            <i class="fa-solid fa-paper-plane"></i> Enviar consulta
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="jose Turin/JOSE TURIN 2.png" alt="José Turín" style="filter:brightness(0) invert(1)" />
+          <p>Dirección agropecuaria con más de 20 años de experiencia en la gestión técnica y estratégica de establecimientos rurales en toda Argentina.</p>
+          <div class="footer-socials">
+            <a class="social-btn" href="https://www.instagram.com/jose.a.turin/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a class="social-btn" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a class="social-btn" href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a class="social-btn" href="https://wa.me/543442326537" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#servicios">Agricultura de precisión</a></li>
+            <li><a href="#servicios">Producción ganadera</a></li>
+            <li><a href="#servicios">Administración de campos</a></li>
+            <li><a href="#servicios">Gestión del agua</a></li>
+            <li><a href="#servicios">Sustentabilidad</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#nosotros">Quiénes somos</a></li>
+            <li><a href="#campos">Áreas de trabajo</a></li>
+            <li><a href="#proceso">Cómo trabajamos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2024 José Turín — Dirección Agropecuaria. Todos los derechos reservados.</span>
+        <span>Diseñado con <i class="fa-solid fa-heart" style="color:var(--arena)"></i> para el campo argentino</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu(btn) {
+      const links = document.querySelector('.nav-links');
+      const cta   = document.querySelector('.nav-cta');
+      const open  = links.style.display === 'flex';
+      links.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:#fff;padding:20px 24px;border-bottom:1px solid #e8e8e6;gap:16px;z-index:99';
+      cta.style.cssText   = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:calc(68px + ' + (open?0:links.querySelectorAll('li').length * 44) + 'px);left:0;right:0;';
+    }
+
+    function enviarFormulario(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type=submit]');
+      btn.innerHTML = '<i class="fa-solid fa-check"></i> ¡Consulta enviada!';
+      btn.style.background = '#155c38';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Enviar consulta';
+        btn.style.background = '';
+        e.target.reset();
+      }, 3000);
+    }
+
+    /* Animación de contadores al hacer scroll */
+    const observerOpts = { threshold: 0.5 };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const nums = entry.target.querySelectorAll('.stat-num');
+        nums.forEach(el => {
+          const target = parseFloat(el.textContent.replace(/[^0-9.]/g,''));
+          const suffix = el.textContent.replace(/[0-9.]/g,'');
+          let current = 0;
+          const step  = target / 60;
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            el.textContent = (Number.isInteger(target) ? Math.ceil(current) : current.toFixed(1)) + suffix;
+          }, 16);
+        });
+        observer.unobserve(entry.target);
+      });
+    }, observerOpts);
+
+    document.querySelectorAll('#stats').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
