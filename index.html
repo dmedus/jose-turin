@@ -260,37 +260,6 @@
     .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
     .card p  { font-size: .9rem; color: var(--texto-suave); line-height: 1.6; }
 
-    /* ── Campos / Áreas ──────────────────────────────────────────── */
-    #campos { background: var(--gris); }
-    .campos-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 24px;
-    }
-    .campo-card {
-      background: var(--blanco);
-      border-radius: var(--radio);
-      overflow: hidden;
-      box-shadow: var(--sombra);
-      transition: var(--trans);
-    }
-    .campo-card:hover { transform: translateY(-4px); box-shadow: var(--sombra-hover); }
-    .campo-thumb {
-      height: 160px;
-      background: var(--verde);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .campo-thumb img { height: 80px; object-fit: contain; opacity: .9; }
-    .campo-thumb.alt { background: var(--arena); }
-    .campo-body { padding: 24px; }
-    .campo-body h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
-    .campo-body p  { font-size: .88rem; color: var(--texto-suave); }
-    .campo-meta {
-      display: flex; gap: 16px; margin-top: 14px;
-      font-size: .82rem; color: var(--texto-suave); font-weight: 500;
-    }
-    .campo-meta i { color: var(--verde); margin-right: 4px; }
-
     /* ── Proceso ─────────────────────────────────────────────────── */
     #proceso { background: var(--verde); color: #fff; }
     #proceso .tag { color: var(--arena); }
@@ -461,7 +430,6 @@
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#videos">Videos</a></li>
-        <li><a href="#campos">Campos</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
@@ -537,9 +505,9 @@
         <span class="tag"><i class="fa-solid fa-user-tie"></i>&nbsp; Quiénes somos</span>
         <h2 class="titulo">Experiencia y confianza en el campo entrerriano</h2>
         <p class="subtitulo">
-          José Turín es una dirección agropecuaria con base en Concepción del Uruguay, Entre Ríos,
-          fundada con el objetivo de ofrecer asesoramiento técnico y estratégico de excelencia
-          a productores de la región y de todo el país.
+          Soy contador público graduado de la Universidad de Buenos Aires, especializado en administraciones
+          agropecuarias. Trabajo con productores que buscan obtener mejor información para tomar decisiones
+          con confianza. Trabajo con cada uno, adaptándome a su realidad, porque cada campo es distinto.
         </p>
         <div class="puntos">
           <div class="punto">
@@ -548,11 +516,11 @@
           </div>
           <div class="punto">
             <i class="fa-solid fa-circle-check"></i>
-            <p>Equipo técnico interdisciplinario: ingenieros agrónomos, veterinarios y economistas rurales.</p>
+            <p>Mirada financiera especializada: presupuestos de campaña, control de costos y análisis de rentabilidad por actividad.</p>
           </div>
           <div class="punto">
             <i class="fa-solid fa-circle-check"></i>
-            <p>Uso de tecnología de precisión para maximizar la eficiencia y rentabilidad.</p>
+            <p>Experiencia real en empresas agropecuarias de gran escala y campos familiares — entendemos las dos realidades.</p>
           </div>
           <div class="punto">
             <i class="fa-solid fa-circle-check"></i>
@@ -578,44 +546,39 @@
       </div>
       <div class="cards-grid">
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-wheat-awn"></i></div>
-          <h3>Agricultura de precisión</h3>
-          <p>Planificación de siembras, fertilización variable y monitoreo satelital de cultivos para maximizar rendimientos.</p>
+          <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Gestión Agropecuaria</h3>
+          <p>Presupuestos, cashflow e informes claros para tomar decisiones.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-cow"></i></div>
-          <h3>Producción ganadera</h3>
-          <p>Diseño de sistemas de cría, invernada y tambo. Nutrición animal y manejo sanitario integral del rodeo.</p>
+          <div class="card-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+          <h3>Planificación Fiscal Agro</h3>
+          <p>Optimización impositiva y cierres estratégicos para cuidar tu rentabilidad.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-file-contract"></i></div>
-          <h3>Administración de campos</h3>
-          <p>Gestión contable, liquidación de arrendamientos, contratos y seguimiento de indicadores de rentabilidad.</p>
+          <div class="card-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3>Planificación Financiera</h3>
+          <p>Planes de inversión y análisis de financiamiento con visión de futuro.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-droplet"></i></div>
-          <h3>Gestión del agua</h3>
-          <p>Diseño de aguadas, tajamares y sistemas de riego. Monitoreo de napas y planificación hídrica estacional.</p>
+          <div class="card-icon"><i class="fa-solid fa-people-arrows"></i></div>
+          <h3>Tercerización Administrativa</h3>
+          <p>Pagos, cobros y cuentas corrientes sin sumar empleados.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-leaf"></i></div>
-          <h3>Sustentabilidad</h3>
-          <p>Certificaciones ambientales, huella de carbono y planes de conservación de suelos para producción responsable.</p>
+          <div class="card-icon"><i class="fa-solid fa-user-tie"></i></div>
+          <h3>CFO Externo</h3>
+          <p>Un director financiero en tu campo, cuando lo necesités.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-chart-bar"></i></div>
-          <h3>Análisis económico</h3>
-          <p>Proyecciones financieras, análisis de inversiones y planes de negocio adaptados al contexto agropecuario.</p>
+          <div class="card-icon"><i class="fa-solid fa-file-signature"></i></div>
+          <h3>Contratos Agro</h3>
+          <p>Arrendamientos y compra-ventas bajo control.</p>
         </div>
         <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-tractor"></i></div>
-          <h3>Maquinaria y logística</h3>
-          <p>Coordinación de labores, contratistas y cosecha. Optimización de la cadena logística desde el campo al mercado.</p>
-        </div>
-        <div class="card">
-          <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-          <h3>Capacitación rural</h3>
-          <p>Talleres, jornadas de campo y formación continua para productores, peones y personal técnico.</p>
+          <div class="card-icon"><i class="fa-solid fa-house-user"></i></div>
+          <h3>Empresas Familiares</h3>
+          <p>Organización patrimonial y reglas claras para familia y negocio.</p>
         </div>
       </div>
     </div>
@@ -658,55 +621,6 @@
     </div>
   </section>
 
-  <!-- ═══════════ CAMPOS / ÁREAS ═══════════ -->
-  <section id="campos" class="section">
-    <div class="container">
-      <div class="seccion-header">
-        <span class="tag" style="color:var(--verde)"><i class="fa-solid fa-map-location-dot"></i>&nbsp; Áreas de trabajo</span>
-        <h2 class="titulo">Presencia en todo el país</h2>
-        <p class="subtitulo">Operamos en las principales regiones productivas de Argentina con equipos especializados en cada zona.</p>
-      </div>
-      <div class="campos-grid">
-        <div class="campo-card">
-          <div class="campo-thumb">
-            <img src="img/jt6.png" alt="Pampeana" />
-          </div>
-          <div class="campo-body">
-            <h3>Región Pampeana</h3>
-            <p>Soja, maíz, trigo y ganadería de cría e invernada en las principales zonas productivas del país.</p>
-            <div class="campo-meta">
-              <span><i class="fa-solid fa-map-pin"></i> Buenos Aires, Córdoba, La Pampa</span>
-            </div>
-          </div>
-        </div>
-        <div class="campo-card">
-          <div class="campo-thumb alt">
-            <img src="img/jt7.png" alt="NEA" />
-          </div>
-          <div class="campo-body">
-            <h3>Noreste (NEA)</h3>
-            <p>Ganadería extensiva, arroceras y cultivos subtropicales en ambientes de alta complejidad productiva.</p>
-            <div class="campo-meta">
-              <span><i class="fa-solid fa-map-pin"></i> Corrientes, Entre Ríos, Misiones</span>
-            </div>
-          </div>
-        </div>
-        <div class="campo-card">
-          <div class="campo-thumb">
-            <img src="img/jt6.png" alt="NOA" />
-          </div>
-          <div class="campo-body">
-            <h3>Noroeste (NOA)</h3>
-            <p>Producción de caña, soja y poroto. Ganadería de altura y cultivos andinos de alto valor.</p>
-            <div class="campo-meta">
-              <span><i class="fa-solid fa-map-pin"></i> Tucumán, Salta, Jujuy</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════ PROCESO ═══════════ -->
   <section id="proceso" class="section">
     <div class="container">
@@ -720,23 +634,23 @@
       <div class="proceso-steps">
         <div class="step">
           <div class="step-num">1</div>
-          <h3>Diagnóstico inicial</h3>
-          <p>Visita al establecimiento y análisis completo del sistema productivo actual.</p>
+          <h3>Conversación inicial</h3>
+          <p>Nos conocemos, entendemos tu operatoria y tus necesidades. Sin compromiso, sin letra chica.</p>
         </div>
         <div class="step">
           <div class="step-num">2</div>
-          <h3>Plan estratégico</h3>
-          <p>Diseño de un plan a medida con metas claras, cronograma y presupuesto estimado.</p>
+          <h3>Diagnóstico de Campaña</h3>
+          <p>Analizamos los números de tu última campaña: qué salió bien, qué no, y dónde está la oportunidad. Recibís un informe claro con recomendaciones concretas.</p>
         </div>
         <div class="step">
           <div class="step-num">3</div>
-          <h3>Implementación</h3>
-          <p>Ejecución con seguimiento técnico continuo y ajuste en tiempo real según resultados.</p>
+          <h3>Plan y seguimiento</h3>
+          <p>Si querés ir más allá, diseñamos un plan económico / financiero para tu próxima campaña con seguimiento mensual y ajustes en tiempo real.</p>
         </div>
         <div class="step">
           <div class="step-num">4</div>
-          <h3>Informes y resultados</h3>
-          <p>Reportes periódicos con indicadores clave y proyecciones para la toma de decisiones.</p>
+          <h3>Resultados y decisiones</h3>
+          <p>Reportes periódicos con indicadores claros para que cada decisión esté respaldada por datos, no por intuición.</p>
         </div>
       </div>
     </div>
@@ -809,12 +723,13 @@
             <label>Servicio de interés</label>
             <select>
               <option value="">Seleccioná un servicio</option>
-              <option>Agricultura de precisión</option>
-              <option>Producción ganadera</option>
-              <option>Administración de campos</option>
-              <option>Gestión del agua</option>
-              <option>Sustentabilidad</option>
-              <option>Análisis económico</option>
+              <option>Gestión Agropecuaria</option>
+              <option>Planificación Fiscal Agro</option>
+              <option>Planificación Financiera</option>
+              <option>Tercerización Administrativa</option>
+              <option>CFO Externo</option>
+              <option>Contratos Agro</option>
+              <option>Empresas Familiares</option>
               <option>Otro</option>
             </select>
           </div>
@@ -856,18 +771,17 @@
         <div class="footer-col">
           <h4>Servicios</h4>
           <ul>
-            <li><a href="#servicios">Agricultura de precisión</a></li>
-            <li><a href="#servicios">Producción ganadera</a></li>
-            <li><a href="#servicios">Administración de campos</a></li>
-            <li><a href="#servicios">Gestión del agua</a></li>
-            <li><a href="#servicios">Sustentabilidad</a></li>
+            <li><a href="#servicios">Gestión Agropecuaria</a></li>
+            <li><a href="#servicios">Planificación Fiscal Agro</a></li>
+            <li><a href="#servicios">Planificación Financiera</a></li>
+            <li><a href="#servicios">CFO Externo</a></li>
+            <li><a href="#servicios">Empresas Familiares</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Empresa</h4>
           <ul>
             <li><a href="#nosotros">Quiénes somos</a></li>
-            <li><a href="#campos">Áreas de trabajo</a></li>
             <li><a href="#proceso">Cómo trabajamos</a></li>
             <li><a href="#contacto">Contacto</a></li>
           </ul>
